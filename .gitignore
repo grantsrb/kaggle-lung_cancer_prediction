@@ -2,3 +2,4 @@
 sample_images/
 stage1_labels.csv
 data_password.txt
+*.sh
