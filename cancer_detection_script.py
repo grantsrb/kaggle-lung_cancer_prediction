@@ -21,21 +21,21 @@ def pickle2np(dicts):
 
 train_dicts = []
 for i in range(1,8):
-    path = './train_set'+str(i)+'.p'
+    path = '../downloads/train_set'+str(i)+'.p'
     with open(path, mode='rb') as f:
         train_dicts.append(pickle.load(f))
 train_images, train_labels = pickle2np(train_dicts)
 
 valid_dicts = []
 for i in range(1,3):
-    path = './valid_set'+str(i)+'.p'
+    path = '../downloads/valid_set'+str(i)+'.p'
     with open(path, mode='rb') as f:
         valid_dicts.append(pickle.load(f))
 valid_images, valid_labels = pickle2np(valid_dicts)
 del valid_dicts
 
 test_dicts = []
-path = './test.p'
+path = '../downloads/test.p'
 with open(path, 'rb') as f:
     test_dicts.append(pickle.load(f))
 test_images, test_ids = pickle2np(test_dicts)
@@ -221,4 +221,3 @@ with tf.Session() as sess:
     plt.ylim([0,loss[0]])
     plt.title("Loss Over Training Epochs")
     plt.show()
-        
