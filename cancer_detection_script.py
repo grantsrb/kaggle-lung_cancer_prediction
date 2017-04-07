@@ -222,3 +222,14 @@ with tf.Session() as sess:
     plt.ylim([0,loss[0]])
     plt.title("Loss Over Training Epochs")
     plt.show()
+
+
+# test_dicts = []
+# path = '../downloads/test.p'
+# with open(path, 'rb') as f:
+#     test_dicts.append(pickle.load(f))
+# test_images, test_ids = pickle2np(test_dicts)
+# del test_dicts
+#
+# print("test Shape: " + str(test_images.shape))
+#
