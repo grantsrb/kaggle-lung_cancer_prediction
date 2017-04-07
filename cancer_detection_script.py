@@ -24,7 +24,8 @@ for i in range(1,8):
     path = '../downloads/train_set'+str(i)+'.p'
     with open(path, mode='rb') as f:
         train_dicts.append(pickle.load(f))
-train_images, train_labels = pickle2np(train_dicts)
+train_images, train_labels = pickle2np(train_dicts[:6])
+del train_dicts
 
 print("Imported Datas")
 print("Training Shape: " + str(train_images.shape))
@@ -35,20 +36,10 @@ for i in range(1,3):
     path = '../downloads/valid_set'+str(i)+'.p'
     with open(path, mode='rb') as f:
         valid_dicts.append(pickle.load(f))
-valid_images, valid_labels = pickle2np(valid_dicts)
+valid_images, valid_labels = pickle2np(valid_dicts[:1])
 del valid_dicts
 
 print("Validation Shape: " + str(valid_images.shape))
-
-test_dicts = []
-path = '../downloads/test.p'
-with open(path, 'rb') as f:
-    test_dicts.append(pickle.load(f))
-test_images, test_ids = pickle2np(test_dicts)
-del test_dicts
-
-print("test Shape: " + str(test_images.shape))
-
 
 
 def center_and_normalize(data, mu, dev):
