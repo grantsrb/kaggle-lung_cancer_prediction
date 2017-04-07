@@ -26,6 +26,10 @@ for i in range(1,8):
         train_dicts.append(pickle.load(f))
 train_images, train_labels = pickle2np(train_dicts)
 
+print("Imported Datas")
+print("Training Shape: " + str(train_images.shape))
+
+
 valid_dicts = []
 for i in range(1,3):
     path = '../downloads/valid_set'+str(i)+'.p'
@@ -34,12 +38,18 @@ for i in range(1,3):
 valid_images, valid_labels = pickle2np(valid_dicts)
 del valid_dicts
 
+print("Validation Shape: " + str(valid_images.shape))
+
 test_dicts = []
 path = '../downloads/test.p'
 with open(path, 'rb') as f:
     test_dicts.append(pickle.load(f))
 test_images, test_ids = pickle2np(test_dicts)
 del test_dicts
+
+print("test Shape: " + str(test_images.shape))
+
+
 
 def center_and_normalize(data, mu, dev):
     return (data-mu)/dev
@@ -95,7 +105,7 @@ def preprocess(images, labels, mu, dev, angles=[-5,5], add_data=False):
     return images_copy, labels_copy
 
 process_mu = np.mean(train_images)
-process_dev = np.std(train_images)
+process_dev = 500
 
 train_images, train_labels = preprocess(train_images, train_labels, process_mu, process_dev)
 # train_chops = chop_data(train_images,32)
